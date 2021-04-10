@@ -1,0 +1,42 @@
+<%- include("header") -%>
+
+<div class="box" id="heading">
+  <!-- tutaj w tych % bo parsujemy zmienna z js znak rownosci -->
+  <h1> <%= listTitle %> </h1>
+</div>
+
+<div class="box">
+
+  <!-- <li>Buy food</li> tutaj mozna to wyciac jak jest for loop, bo te same rekordy wpakowac w array app.js
+ <li>Cook Food</li>
+ <li>Eat Food</li> -->
+
+ <!-- ejs znaczniki do newListItem bo komentarz nie dziala: to ponizej to tylko 1 slot na rekord, a lista bedzie sie w nim upychac jedno za drugim, a nie po drugim, trzeba for loopa
+  <li>     newListItem </li>     -->
+
+    <% for (var i=0; i<newListItems.length; i++) { %>
+
+<!-- zamaiast struktury ul i li, kazdy element to div o klasie element -->
+      <div class="item">
+        <!-- zamiast bulletpointow dajemy checkbox w tym divie -->
+        <input type="checkbox">
+        <p><%= newListItems[i]; %></p>
+      </div>
+    <% }; %>
+
+    <form class="" action="/" method="post">
+    <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+    <button type="submit" name="list" value="<%= listTitle %>">+</button>
+    </form>
+
+</div>
+
+<!-- <% if (listTitle === "Saturday" || listTitle === "Sunday"){ %>
+  <h1 style="color: purple"><%= listTitle %> ToDo List</h1>
+<%} else { %>
+  <h1 style="color: blue"><%= listTitle %> ToDo List</h1>
+<% } %>
+
+<h1>It's a <%= listTitle%>!</h1> -->
+
+<%- include("footer") -%>
