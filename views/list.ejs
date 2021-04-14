@@ -14,15 +14,24 @@
  <!-- ejs znaczniki do newListItem bo komentarz nie dziala: to ponizej to tylko 1 slot na rekord, a lista bedzie sie w nim upychac jedno za drugim, a nie po drugim, trzeba for loopa
   <li>     newListItem </li>     -->
 
-    <% for (var i=0; i<newListItems.length; i++) { %>
 
-<!-- zamaiast struktury ul i li, kazdy element to div o klasie element -->
-      <div class="item">
-        <!-- zamiast bulletpointow dajemy checkbox w tym divie -->
-        <input type="checkbox">
-        <p><%= newListItems[i]; %></p>
-      </div>
-    <% }; %>
+
+    <%newListItems.forEach(function(item){ %>
+
+      <form action="/delete" method="post">
+
+      <!-- zamaiast struktury ul i li, kazdy element to div o klasie element -->
+            <div class="item">
+              <!-- zamiast bulletpointow dajemy checkbox w tym divie -->
+              <input type="checkbox" name="checkbox" value="<%=item._id%>" onChange="this.form.submit()">
+              <p><%= item.name %></p>
+              </div>
+            <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+          </form>
+          <%  }); %>
+
+
+
 
     <form class="" action="/" method="post">
     <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
