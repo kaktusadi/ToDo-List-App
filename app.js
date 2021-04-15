@@ -243,6 +243,15 @@ app.get("/about", function(req, res){
   res.render("about");
 });
 
-app.listen(3000, function() {
-  console.log("Server started on port 3000.");
+
+// HEROKU DEPLOYMENT https://devcenter.heroku.com/articles/preparing-a-codebase-for-heroku-deployment
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port);
+
+
+app.listen(port, function() {
+  console.log("Server has started on port 3000.");
 });
